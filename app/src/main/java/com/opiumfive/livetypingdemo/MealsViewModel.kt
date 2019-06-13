@@ -8,10 +8,12 @@ import com.opiumfive.livetypingdemo.data.Meal
 class MealsViewModel(val repo: MealsRepo) : ViewModel() {
 
     val catalogData = MutableLiveData<List<Meal>>()
+    val catsData = MutableLiveData<List<Category>>()
 
     var toBeLoaded = mutableListOf<Category>()
 
     fun getCats(force: Boolean = false) = repo.getCategories(force) {
+        catsData.value = it
         toBeLoaded.clear()
         toBeLoaded.addAll(it ?: emptyList())
         getNextCategory()

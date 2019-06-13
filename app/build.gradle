@@ -58,7 +58,10 @@ dependencies {
     def chuck_version = "1.1.0"
     debugImplementation "com.readystatesoftware.chuck:library:$chuck_version"
     releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuck_version"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+
+    // navigation
+    def navigation_version = "2.0.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
 }
