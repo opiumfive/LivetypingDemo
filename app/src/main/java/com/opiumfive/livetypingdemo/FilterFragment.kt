@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.opiumfive.livetypingdemo.data.Category
 import kotlinx.android.synthetic.main.fragment_filter.*
@@ -26,7 +27,7 @@ class FilterFragment : Fragment() {
         recycler.adapter = adapter
 
         accept.setOnClickListener {
-
+            findNavController().navigate(R.id.accept_action)
         }
     }
 

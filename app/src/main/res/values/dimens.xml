@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="image_size">72dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
     <dimen name="margin">16dp</dimen>
+    <dimen name="filter_height">48dp</dimen>
     <dimen name="margin_half">8dp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="header_size">14sp</dimen>
 </resources>

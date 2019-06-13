@@ -22,6 +22,7 @@ class CatalogFragment : Fragment() {
     private fun initUI() {
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter
+        recycler.addItemDecoration(RecyclerLineDecorator(requireContext()))
         recycler.addOnScrollListener(RecyclerScrollListener {
             viewModel.getNextCategory()
         })

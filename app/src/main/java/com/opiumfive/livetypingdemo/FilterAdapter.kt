@@ -25,16 +25,18 @@ class FilterAdapter(private val itemClick: (Category?) -> Unit):  RecyclerView.A
 
     private fun getItem(position: Int) = filterList[position]
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position), position)
 
     override fun getItemCount() = filterList.size
 
     inner class ViewHolder(itemView: View, private val listener: (Category?) -> Unit): RecyclerView.ViewHolder(itemView) {
-        fun bind(cat: Category?) {
+        fun bind(cat: Category?, pos: Int) {
             itemView.text.text = cat?.strCategory
             itemView.image.visibility = if (cat?.active == true) View.VISIBLE else View.INVISIBLE
 
             itemView.setOnClickListener {
+                cat?.active = cat?.active?.not() ?: true
+                notifyItemChanged(pos)
                 listener.invoke(cat)
             }
         }

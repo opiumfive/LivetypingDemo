@@ -24,7 +24,7 @@ class MealsRepo(private val api: IApi) {
         api.getCategories().enqueue(
             {
                 val cats = it.body()?.categories
-                cats?.forEach { currentCats.add(it) }
+                cats?.forEach { currentCats.add(it.apply { active = true }) }
                 result.invoke(cats)
             }, {
                 result.invoke(emptyList())
@@ -41,6 +41,7 @@ class MealsRepo(private val api: IApi) {
         api.getByCategory(category).enqueue(
             {
                 val meals = it.body()?.meals
+                meals?.forEach { it.category = category  }
                 category?.let{ byCatsMap.put(it, meals) }
                 result.invoke(meals)
             }, {

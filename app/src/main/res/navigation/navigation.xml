@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigation" app:startDestination="@id/catalogFragment">
+    <fragment android:id="@+id/catalogFragment"
+              android:name="com.opiumfive.livetypingdemo.CatalogFragment"
+              android:label="CatalogFragment">
+        <action android:id="@+id/actionFilter"
+                app:destination="@id/filterFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                app:popUpTo="@+id/catalogFragment"/>
+    </fragment>
+    <fragment android:id="@+id/filterFragment"
+              android:name="com.opiumfive.livetypingdemo.FilterFragment"
+              android:label="FilterFragment">
+
+        <action
+                android:id="@+id/accept_action"
+                app:popUpTo="@id/catalogFragment" />
+    </fragment>
+</navigation>

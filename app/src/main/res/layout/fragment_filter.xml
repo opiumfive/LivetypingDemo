@@ -8,10 +8,16 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_weight="1"
+            android:overScrollMode="never"
+            android:layout_height="0dp"/>
 
     <Button
             android:id="@+id/accept"
             android:layout_width="match_parent"
+            android:text="@string/apply"
+            android:layout_margin="@dimen/margin"
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
             android:layout_height="wrap_content"/>
 </LinearLayout>
