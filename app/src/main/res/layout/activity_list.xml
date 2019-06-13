@@ -3,6 +3,7 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
+              android:background="@android:color/white"
               android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -27,8 +28,7 @@
 
     <fragment
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:id="@+id/hostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:navGraph="@navigation/navigation"

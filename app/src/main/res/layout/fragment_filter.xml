@@ -19,5 +19,5 @@
             android:layout_margin="@dimen/margin"
             android:background="@drawable/button"
             android:textColor="#ffffff"
-            android:layout_height="wrap_content"/>
+            android:layout_height="36dp"/>
 </LinearLayout>

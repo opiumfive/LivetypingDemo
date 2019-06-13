@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.opiumfive.livetypingdemo.data.Category
 import kotlinx.android.synthetic.main.fragment_filter.*
@@ -25,10 +25,7 @@ class FilterFragment : Fragment() {
     private fun initUI() {
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = adapter
-
-        accept.setOnClickListener {
-            findNavController().navigate(R.id.accept_action)
-        }
+        accept.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.actionAccept, null))
     }
 
     private fun setCategories(list: List<Category>?) {

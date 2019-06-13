@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/navigation" app:startDestination="@id/catalogFragment">
+            android:id="@+id/navigation"
+            app:startDestination="@id/catalogFragment">
     <fragment android:id="@+id/catalogFragment"
               android:name="com.opiumfive.livetypingdemo.CatalogFragment"
               android:label="CatalogFragment">
         <action android:id="@+id/actionFilter"
                 app:destination="@id/filterFragment"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
                 app:popUpTo="@+id/catalogFragment"/>
     </fragment>
     <fragment android:id="@+id/filterFragment"
@@ -18,7 +19,11 @@
               android:label="FilterFragment">
 
         <action
-                android:id="@+id/accept_action"
+                android:id="@+id/actionAccept"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
                 app:popUpTo="@id/catalogFragment" />
     </fragment>
 </navigation>
