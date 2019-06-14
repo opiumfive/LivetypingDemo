@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/navigation"
+            xmlns:tools="http://schemas.android.com/tools"
             app:startDestination="@id/catalogFragment">
+
     <fragment android:id="@+id/catalogFragment"
               android:name="com.opiumfive.livetypingdemo.CatalogFragment"
+              tools:layout="@layout/fragment_list"
               android:label="CatalogFragment">
+
         <action android:id="@+id/actionFilter"
                 app:destination="@id/filterFragment"
                 app:enterAnim="@anim/slide_in_right"
@@ -14,16 +17,15 @@
                 app:popExitAnim="@anim/slide_out_right"
                 app:popUpTo="@+id/catalogFragment"/>
     </fragment>
+
     <fragment android:id="@+id/filterFragment"
               android:name="com.opiumfive.livetypingdemo.FilterFragment"
+              tools:layout="@layout/fragment_filter"
               android:label="FilterFragment">
 
         <action
                 android:id="@+id/actionAccept"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"
                 app:popUpTo="@id/catalogFragment" />
     </fragment>
+
 </navigation>

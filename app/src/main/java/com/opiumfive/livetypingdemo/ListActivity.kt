@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDestination
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -50,9 +51,10 @@ class ListActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.onNavDestinationSelected(findNavController(R.id.hostFragment)) == true) {
-            return true
+        if (item?.itemId == R.id.filter) {
+            findNavController(R.id.hostFragment).navigate(R.id.actionFilter, null)
         }
+
 
         return super.onOptionsItemSelected(item)
     }
