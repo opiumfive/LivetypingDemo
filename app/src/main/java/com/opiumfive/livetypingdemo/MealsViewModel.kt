@@ -11,10 +11,12 @@ class MealsViewModel(val repo: MealsRepo) : ViewModel() {
     val catsData = MutableLiveData<List<Category>>()
 
     var toBeLoaded = mutableListOf<Category>()
+    var loaded = mutableListOf<Category>()
 
     fun getCats(force: Boolean = false) = repo.getCategories(force) {
         catsData.value = it
         toBeLoaded.clear()
+        loaded.clear()
         toBeLoaded.addAll(it ?: emptyList())
         getNextCategory()
     }
@@ -24,6 +26,7 @@ class MealsViewModel(val repo: MealsRepo) : ViewModel() {
     fun getNextCategory() {
         if (toBeLoaded.isNotEmpty()) {
             getByCategory(toBeLoaded[0])
+            loaded.add(toBeLoaded[0])
             toBeLoaded.removeAt(0)
         }
     }

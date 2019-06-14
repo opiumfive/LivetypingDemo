@@ -17,7 +17,7 @@ class FilterAdapter(private val itemClick: (Category?) -> Unit):  RecyclerView.A
     }
 
     fun addList(list: List<Category>) {
-        filterList.addAll(list)
+        list.forEach { filterList.add(Category(it.strCategory, it.active)) }
         notifyDataSetChanged()
     }
 

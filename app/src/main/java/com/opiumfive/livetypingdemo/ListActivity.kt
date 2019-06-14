@@ -26,27 +26,25 @@ class ListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list)
 
         setSupportActionBar(toolbar)
-
         val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment? ?: return
-
-        // Set up Action Bar
         val navController = host.navController
-
         appBarConfiguration = AppBarConfiguration(navController.graph)
-
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         findNavController(R.id.hostFragment).addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.filterFragment -> menuItem?.isVisible = false
-                R.id.catalogFragment -> menuItem?.isVisible = true
+                R.id.catalogFragment -> {
+                    
+                    menuItem?.isVisible = true
+                }
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_filter, menu)
-        menuItem = menu?.findItem(R.id.filterFragment)
+        menuItem = menu?.findItem(R.id.filter)
         return true
     }
 
@@ -54,7 +52,6 @@ class ListActivity : AppCompatActivity() {
         if (item?.itemId == R.id.filter) {
             findNavController(R.id.hostFragment).navigate(R.id.actionFilter, null)
         }
-
 
         return super.onOptionsItemSelected(item)
     }
