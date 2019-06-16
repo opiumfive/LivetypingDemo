@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo
+package com.opiumfive.livetypingdemo.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.opiumfive.livetypingdemo.R
+import com.opiumfive.livetypingdemo.util.RecyclerLineDecorator
+import com.opiumfive.livetypingdemo.util.RecyclerScrollListener
 import com.opiumfive.livetypingdemo.data.Meal
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -24,12 +27,20 @@ class CatalogFragment : Fragment() {
         recycler.adapter = adapter
         recycler.addItemDecoration(RecyclerLineDecorator(requireContext()))
         recycler.addOnScrollListener(RecyclerScrollListener {
+            downProgress.visibility = View.VISIBLE
             viewModel.getNextCategory()
         })
     }
 
     private fun addProducts(list: List<Meal>?) {
+        progress.visibility = View.GONE
+        downProgress.visibility = View.GONE
         adapter.addList(list ?: emptyList())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.catalogData.observe(this, catalogObs)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,14 +52,13 @@ class CatalogFragment : Fragment() {
 
         initUI()
 
-        viewModel.catalogData.observe(this, catalogObs)
+        progress.visibility = View.VISIBLE
 
-        viewModel.getCats()
-    }
-
-    override fun onDestroyView() {
-        viewModel.catalogData.removeObserver(catalogObs)
-
-        super.onDestroyView()
+        if (viewModel.loaded.isEmpty()) {
+            viewModel.getCats()
+        } else {
+            adapter.clear()
+            viewModel.getCurrentList()
+        }
     }
 }

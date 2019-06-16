@@ -1,13 +1,14 @@
-package com.opiumfive.livetypingdemo
+package com.opiumfive.livetypingdemo.filter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.opiumfive.livetypingdemo.R
 import com.opiumfive.livetypingdemo.data.Category
 import kotlinx.android.synthetic.main.view_filter.view.*
 
-class FilterAdapter(private val itemClick: (Category?) -> Unit):  RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
+class FilterAdapter:  RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
 
     var filterList = mutableListOf<Category>()
 
@@ -21,7 +22,7 @@ class FilterAdapter(private val itemClick: (Category?) -> Unit):  RecyclerView.A
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_filter, parent, false), itemClick)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_filter, parent, false))
 
     private fun getItem(position: Int) = filterList[position]
 
@@ -29,7 +30,7 @@ class FilterAdapter(private val itemClick: (Category?) -> Unit):  RecyclerView.A
 
     override fun getItemCount() = filterList.size
 
-    inner class ViewHolder(itemView: View, private val listener: (Category?) -> Unit): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(cat: Category?, pos: Int) {
             itemView.text.text = cat?.strCategory
             itemView.image.visibility = if (cat?.active == true) View.VISIBLE else View.INVISIBLE
@@ -37,7 +38,6 @@ class FilterAdapter(private val itemClick: (Category?) -> Unit):  RecyclerView.A
             itemView.setOnClickListener {
                 cat?.active = cat?.active?.not() ?: true
                 notifyItemChanged(pos)
-                listener.invoke(cat)
             }
         }
     }

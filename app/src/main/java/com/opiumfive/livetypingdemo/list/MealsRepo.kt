@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo
+package com.opiumfive.livetypingdemo.list
 
 import com.iterika.marvel.api.enqueue
 import com.opiumfive.livetypingdemo.api.IApi
@@ -10,6 +10,8 @@ class MealsRepo(private val api: IApi) {
     // cache
     val currentCats = mutableListOf<Category>()
     val byCatsMap = mutableMapOf<String, List<Meal>?>()
+
+    fun isCategoryActive(cat: Category) = currentCats.findLast { cat.strCategory == it.strCategory }?.active == true
 
     fun getCategories(force: Boolean = false, result: (List<Category>?) -> Unit) {
         if (force) {

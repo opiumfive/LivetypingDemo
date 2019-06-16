@@ -1,10 +1,12 @@
-package com.opiumfive.livetypingdemo
+package com.opiumfive.livetypingdemo.list
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.opiumfive.livetypingdemo.R
 import com.opiumfive.livetypingdemo.data.Meal
+import com.opiumfive.livetypingdemo.util.GlideApp
 import kotlinx.android.synthetic.main.view_meal.view.*
 
 class MealsAdapter:  RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
@@ -22,7 +24,8 @@ class MealsAdapter:  RecyclerView.Adapter<MealsAdapter.ViewHolder>() {
         notifyItemRangeInserted(startPosition, list.size)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_meal, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(LayoutInflater.from(parent.context).inflate(
+        R.layout.view_meal, parent, false))
 
     private fun getItem(position: Int) = mealList[position]
 

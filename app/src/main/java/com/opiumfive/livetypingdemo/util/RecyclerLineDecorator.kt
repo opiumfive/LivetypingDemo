@@ -1,10 +1,11 @@
-package com.opiumfive.livetypingdemo
+package com.opiumfive.livetypingdemo.util
 
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import android.graphics.Canvas
 import androidx.core.content.ContextCompat
 import android.graphics.drawable.Drawable
+import com.opiumfive.livetypingdemo.R
 
 class RecyclerLineDecorator(context: Context): RecyclerView.ItemDecoration() {
 

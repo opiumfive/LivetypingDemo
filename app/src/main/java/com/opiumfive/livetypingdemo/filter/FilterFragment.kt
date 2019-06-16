@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo
+package com.opiumfive.livetypingdemo.filter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.opiumfive.livetypingdemo.list.MealsViewModel
+import com.opiumfive.livetypingdemo.R
 import com.opiumfive.livetypingdemo.data.Category
 import kotlinx.android.synthetic.main.fragment_filter.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,9 +20,7 @@ class FilterFragment : Fragment() {
 
     val catsObs: Observer<List<Category>> by lazy { Observer<List<Category>> { setCategories(it) } }
 
-    val adapter = FilterAdapter {
-
-    }
+    val adapter = FilterAdapter()
 
     private fun initUI() {
         recycler.layoutManager = LinearLayoutManager(context)
@@ -33,6 +31,11 @@ class FilterFragment : Fragment() {
             viewModel.repo.currentCats.addAll(adapter.filterList)
             findNavController().navigate(R.id.actionAccept, null)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.catsData.observe(this, catsObs)
     }
 
     private fun setCategories(list: List<Category>?) {
@@ -48,14 +51,6 @@ class FilterFragment : Fragment() {
 
         initUI()
 
-        viewModel.catsData.observe(this, catsObs)
-
-        viewModel.getCats()
-    }
-
-    override fun onDestroyView() {
-        viewModel.catsData.removeObserver(catsObs)
-
-        super.onDestroyView()
+        viewModel.getFilters()
     }
 }

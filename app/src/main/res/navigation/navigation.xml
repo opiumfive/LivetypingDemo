@@ -5,7 +5,7 @@
             app:startDestination="@id/catalogFragment">
 
     <fragment android:id="@+id/catalogFragment"
-              android:name="com.opiumfive.livetypingdemo.CatalogFragment"
+              android:name="com.opiumfive.livetypingdemo.list.CatalogFragment"
               tools:layout="@layout/fragment_list"
               android:label="@string/meals">
 
@@ -19,7 +19,7 @@
     </fragment>
 
     <fragment android:id="@+id/filterFragment"
-              android:name="com.opiumfive.livetypingdemo.FilterFragment"
+              android:name="com.opiumfive.livetypingdemo.filter.FilterFragment"
               tools:layout="@layout/fragment_filter"
               android:label="@string/filters">
 
