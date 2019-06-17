@@ -51,6 +51,10 @@ class FilterFragment : Fragment() {
 
         initUI()
 
-        viewModel.getFilters()
+        if (viewModel.filterScreenData.isEmpty()) {
+            viewModel.getFilters()
+        } else {
+            viewModel.getCacheFilters()
+        }
     }
 }

@@ -10,15 +10,10 @@ import kotlinx.android.synthetic.main.view_filter.view.*
 
 class FilterAdapter:  RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
 
-    var filterList = mutableListOf<Category>()
-
-    fun clear() {
-        filterList.clear()
-        notifyDataSetChanged()
-    }
+    var filterList: List<Category> = emptyList()
 
     fun addList(list: List<Category>) {
-        list.forEach { filterList.add(Category(it.strCategory, it.active)) }
+        filterList = list
         notifyDataSetChanged()
     }
 

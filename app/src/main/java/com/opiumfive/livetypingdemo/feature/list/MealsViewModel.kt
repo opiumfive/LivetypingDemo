@@ -10,6 +10,7 @@ class MealsViewModel(val repo: MealsRepo) : ViewModel() {
     val catalogData = MutableLiveData<List<Meal>>()
     val catsData = MutableLiveData<List<Category>>()
 
+    val filterScreenData = mutableListOf<Category>()
     var toBeLoaded = mutableListOf<Category>()
     var loaded = mutableListOf<Category>()
 
@@ -22,7 +23,13 @@ class MealsViewModel(val repo: MealsRepo) : ViewModel() {
     }
 
     fun getFilters() = repo.getCategories {
-        catsData.value = it
+        filterScreenData.clear()
+        it?.forEach { filterScreenData.add(Category(it.strCategory, it.active)) }
+        catsData.value = filterScreenData
+    }
+
+    fun getCacheFilters() {
+        catsData.value = filterScreenData
     }
 
     fun getByCategory(category: Category?) = repo.getByCategory(category?.strCategory) { catalogData.value = it }
