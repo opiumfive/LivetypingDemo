@@ -4,8 +4,8 @@ import android.app.Application
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import com.opiumfive.livetypingdemo.api.IApi
-import com.opiumfive.livetypingdemo.list.MealsRepo
-import com.opiumfive.livetypingdemo.list.MealsViewModel
+import com.opiumfive.livetypingdemo.feature.list.MealsRepo
+import com.opiumfive.livetypingdemo.feature.list.MealsViewModel
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import org.koin.android.ext.android.startKoin

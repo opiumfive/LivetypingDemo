@@ -13,10 +13,13 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.iterika.marvel.api.enqueue
 import com.opiumfive.livetypingdemo.api.IApi
+import com.opiumfive.livetypingdemo.feature.list.MealsRepo
 import kotlinx.android.synthetic.main.activity_list.*
 import org.koin.android.ext.android.inject
 
 class ListActivity : AppCompatActivity() {
+
+    val repo : MealsRepo by inject()
 
     var menuItem: MenuItem? = null
     private lateinit var appBarConfiguration : AppBarConfiguration
@@ -35,7 +38,7 @@ class ListActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.filterFragment -> menuItem?.isVisible = false
                 R.id.catalogFragment -> {
-                    
+                    menuItem?.setIcon(if (repo.isFilterApplied()) R.drawable.filter_chosen else R.drawable.filter)
                     menuItem?.isVisible = true
                 }
             }

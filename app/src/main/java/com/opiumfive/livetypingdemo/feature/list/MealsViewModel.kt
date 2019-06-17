@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo.list
+package com.opiumfive.livetypingdemo.feature.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

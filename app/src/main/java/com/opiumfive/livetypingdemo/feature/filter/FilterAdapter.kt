@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo.filter
+package com.opiumfive.livetypingdemo.feature.filter
 
 import android.view.LayoutInflater
 import android.view.View

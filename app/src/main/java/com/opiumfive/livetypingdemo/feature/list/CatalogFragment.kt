@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo.list
+package com.opiumfive.livetypingdemo.feature.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,6 +30,13 @@ class CatalogFragment : Fragment() {
             downProgress.visibility = View.VISIBLE
             viewModel.getNextCategory()
         })
+
+        refresh.setOnRefreshListener {
+            refresh.isRefreshing = false
+            adapter.clear()
+            progress.visibility = View.VISIBLE
+            viewModel.getCats(true)
+        }
     }
 
     private fun addProducts(list: List<Meal>?) {

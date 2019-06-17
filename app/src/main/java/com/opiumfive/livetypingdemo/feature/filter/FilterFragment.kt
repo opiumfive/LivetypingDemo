@@ -1,4 +1,4 @@
-package com.opiumfive.livetypingdemo.filter
+package com.opiumfive.livetypingdemo.feature.filter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.opiumfive.livetypingdemo.list.MealsViewModel
+import com.opiumfive.livetypingdemo.feature.list.MealsViewModel
 import com.opiumfive.livetypingdemo.R
 import com.opiumfive.livetypingdemo.data.Category
 import kotlinx.android.synthetic.main.fragment_filter.*
